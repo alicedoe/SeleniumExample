@@ -8,7 +8,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 public class BrowserFactory {
 	public static WebDriver getDriver(String browser){
-		WebDriver driver = new FirefoxDriver();
+		WebDriver driver;
 		switch (browser.toLowerCase()) {
         	case "firefox":
         		driver = new FirefoxDriver();
@@ -23,7 +23,7 @@ public class BrowserFactory {
         		driver = new ChromeDriver();
         		break;
         	default:
-        		break;
+        		driver = new FirefoxDriver();
 		} // end switch
 
 		return driver;

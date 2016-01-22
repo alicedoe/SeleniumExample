@@ -14,7 +14,7 @@ public class GoudaWiki extends BasePage {
 	WebElement goudaHeading;
 
 	public void verifyGoudaPage() {
-		assert (goudaHeading.getText() == "Gouda cheeese");
+		assert (goudaHeading.getText().equals("Gouda cheese"));
 	}
 	
 	@Override
