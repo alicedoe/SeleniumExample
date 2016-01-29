@@ -1,13 +1,13 @@
-package com.cri.selenium.model;
+package com.eg.test.automation.selenium;
 
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.apache.commons.lang3.SerializationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BasePage {
-	static WebDriverResource wdResource = WebDriverResource.getInstance();
+	public static WebDriverResource wdResource = WebDriverResource.getInstance();
 	// The parentWindowHandle and localWindowHandle are static strings representing the
 	// handle of the local page window or tab being used by this page and its parent.
 	//  Any test that only uses one tab or browser window will have the same string in
@@ -24,6 +24,16 @@ public abstract class BasePage {
 		WebDriverResource newWdResource = WebDriverResource.newWindow();
 		localWindowHandle =  newWdResource.driver.getWindowHandle();
 		return newWdResource;
+	}
+
+	// The getInstance method uses the PageFactory to create a page from the class
+	//  specified in the parameter.  This BasePage method is what allows the Test to be agnostic
+	//  of Selenium entirely.  It also sets up the wait object and ties it to the ready() overloaded in the
+	//  concrete Page class.
+	public static <C extends BasePage> C getInstance(Class<C> clazz){
+		C page = PageFactory.initElements(wdResource.driver, clazz);
+		wdResource.wait.until(page.ready());
+		return page;
 	}
 	
 	public static void quit(){

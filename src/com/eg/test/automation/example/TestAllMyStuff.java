@@ -1,16 +1,19 @@
-package com.cri.selenium.example;
+package com.eg.test.automation.example;
 
-import org.junit.*;
-import com.cri.selenium.model.*;
+import com.eg.test.automation.selenium.BasePage;
+import com.eg.test.automation.selenium.model.*;
+import org.junit.AfterClass;
+import org.junit.Test;
 
 public class TestAllMyStuff {
+
 	@Test
 	public void cheeseTest() throws Exception {
-		/* Use the store to get our first page.  Encapsulated in this call is the creation of our WebDriver Resource
-			which gives us our driver and wait objects.  We will also use the Browser Factory to select the appropriate
-			browser driver object.
+		/*  Use the BasePage getInstance() to get a reference to your first model.  Encapsulated in this call is the
+		    creation of our WebDriver Resource which gives us our driver and wait objects.  We will also use the
+		    Browser Factory to select the appropriate browser driver object.
 		*/
-		GoogleSearch searchPage = (GoogleSearch)PageStore.getPage(GoogleSearch.class);
+		GoogleSearch searchPage = BasePage.getInstance(GoogleSearch.class);
 
 		// calling the searchForCheese method will preform the search and return the results page.
 	    GoogleResults resultsPage = searchPage.searchForCheese();
@@ -25,7 +28,7 @@ public class TestAllMyStuff {
 
 	@Test
 	public void jQueryUI() throws Exception {
-		jQueryUiHome jQueryPage = (jQueryUiHome) PageStore.getPage(jQueryUiHome.class);
+		jQueryUiHome jQueryPage = BasePage.getInstance(jQueryUiHome.class);
 		jQueryPage.gotoPage();
 		jQueryPage.verifyPage();
 		jQueryPage.demosLink.click();
@@ -33,9 +36,7 @@ public class TestAllMyStuff {
 
 	@AfterClass
 	public static void tearDown() throws Exception {
-		// Code executed after each test 
-		// quit is an inherited method on Base Page class.  You can call quit on any page or the Store itself.
-		PageStore.quit();
+		BasePage.quit();
 	}
 
 }

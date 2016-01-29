@@ -1,8 +1,9 @@
-package com.cri.selenium.model;
+package com.eg.test.automation.selenium.model;
 
 import java.util.Arrays;
 import java.util.List;
 
+import com.eg.test.automation.selenium.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,7 @@ public class GoogleResults extends BasePage {
 	public CheeseWiki goToWikiPage(){
 		assert(cheeseWiki.isDisplayed());
 	    cheeseWiki.click();
-		CheeseWiki cheesePage = (CheeseWiki)PageStore.getPage(CheeseWiki.class);
+		CheeseWiki cheesePage = getInstance(CheeseWiki.class);
 	    wdResource.wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mw-wiki-logo")));
 		return cheesePage;
 	}

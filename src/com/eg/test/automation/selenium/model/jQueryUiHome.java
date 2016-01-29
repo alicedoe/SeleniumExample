@@ -1,7 +1,8 @@
-package com.cri.selenium.model;
+package com.eg.test.automation.selenium.model;
 
 import java.util.Arrays;
 
+import com.eg.test.automation.selenium.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;

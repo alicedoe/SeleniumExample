@@ -1,8 +1,8 @@
-package com.cri.selenium.model;
+package com.eg.test.automation.selenium.model;
 
 import java.util.Arrays;
-import java.util.*;
 
+import com.eg.test.automation.selenium.BasePage;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +18,7 @@ public class CheeseWiki extends BasePage {
 	public GoudaWiki goToGoudaPage(){
 		assert(goudaLink.isDisplayed());
 		goudaLink.sendKeys(Keys.SHIFT, Keys.ENTER);
-		GoudaWiki goudaPage = (GoudaWiki)PageStore.getPage(GoudaWiki.class);
+		GoudaWiki goudaPage = getInstance(GoudaWiki.class);
 
 		return goudaPage;
 	}

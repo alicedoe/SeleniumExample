@@ -1,4 +1,4 @@
-package com.cri.selenium.model;
+package com.eg.test.automation.selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

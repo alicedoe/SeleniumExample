@@ -1,2 +1,2 @@
-# SeleniumTestPlayground
-An example Selenium project using PageStore and PageFactory
+# SeleniumTestExample
+An example Selenium project using PageFactory
