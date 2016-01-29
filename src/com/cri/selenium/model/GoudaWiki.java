@@ -19,6 +19,11 @@ public class GoudaWiki extends BasePage {
 	
 	@Override
 	public ExpectedCondition<?> ready() {
+		// calling the super class ready() first allow you to setup the parent
+		// and local window handles and switch to the correct window prior to
+		// checking for your ready condition.
+		super.ready();
+
 		return ExpectedConditions.visibilityOfAllElements(Arrays.asList(new WebElement[]{goudaHeading}));
 	}
 }

@@ -16,13 +16,19 @@ public class GoogleSearch extends BasePage {
 	@FindBy(how = How.NAME, using = "btnG")
 	public WebElement btnSubmit;
 	
-	public void searchForCheese(){
+	public GoogleResults searchForCheese(){
 	    searchBox.sendKeys("Cheese");
 	    btnSubmit.click();
+		GoogleResults resultsPage = (GoogleResults)PageStore.getPage(GoogleResults.class);
+		return resultsPage;
 	}
 
 	@Override
 	public ExpectedCondition<?> ready() {
+		// calling the super class ready() first allow you to setup the parent
+		// and local window handles and switch to the correct window prior to
+		// checking for your ready condition.
+		super.ready();
 		return ExpectedConditions.visibilityOfAllElements(Arrays.asList(new WebElement[]{searchBox}));
 	}
 

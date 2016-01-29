@@ -1,0 +1,7 @@
+{
+  "pageInfo": {
+    "browserName": "firefox",
+    "baseURL": "http://www.google.com",
+    "waitTimeOut": "20"
+  }
+}

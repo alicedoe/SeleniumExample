@@ -1,7 +1,9 @@
 package com.cri.selenium.model;
 
 import java.util.Arrays;
+import java.util.*;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -13,13 +15,20 @@ public class CheeseWiki extends BasePage {
 	@FindBy(how = How.XPATH, using = "//a[contains(.,'Gouda')]")
 	WebElement goudaLink;
 	
-	public void goToGoudaPage(){
+	public GoudaWiki goToGoudaPage(){
 		assert(goudaLink.isDisplayed());
-	    goudaLink.click();
+		goudaLink.sendKeys(Keys.SHIFT, Keys.ENTER);
+		GoudaWiki goudaPage = (GoudaWiki)PageStore.getPage(GoudaWiki.class);
+
+		return goudaPage;
 	}
 	
 	@Override
 	public ExpectedCondition<?> ready() {
+		// calling the super class ready() first allow you to setup the parent
+		// and local window handles and switch to the correct window prior to
+		// checking for your ready condition.
+		super.ready();
 		return ExpectedConditions.visibilityOfAllElements(Arrays.asList(new WebElement[]{goudaLink}));
 	}
 	
