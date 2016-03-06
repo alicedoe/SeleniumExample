@@ -12,15 +12,14 @@ public class WebDriverResource {
 	public WebDriver driver;
 	public WebDriverWait wait;
 
-	// Exists to defeat instantiation and set the parameters.
-	//  http://www.google.com/webhp?complete=1&hl=en
-	protected WebDriverResource() {
+	//  Exists to defeat instantiation and set the parameters.  We will pull the browser name, wait timeout,
+	//  and base url from the json file then setup the WebDriverResource driver and wait variables.
+	private WebDriverResource() {
 		//  lets get the browser info from the JSON config file.
         String browserName= "";
         String baseURL = "";
         int waitTimeOut = 0;
 		try
-
 		{
 			JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject)parser.parse(new FileReader("./src/config.json"));
@@ -49,12 +48,4 @@ public class WebDriverResource {
 		return instance;
 	} // end getInstance()
 
-    //  This method allow us to get a new WebDriverResource for anohter window.
-    //  It will use the same config data, but will have a handle to a different webdriver then
-    //  the primary WebDriverResource object.  Note:  You will have to navigate this webdriver from scratch.
-	//  Tabs launch from the Primary WebDriver will be manged, switched to and from within the Primary WebDriver.
-    public static WebDriverResource newWindow(){
-        WebDriverResource wdr = new WebDriverResource();
-        return wdr;
-    }
 }  //  end class

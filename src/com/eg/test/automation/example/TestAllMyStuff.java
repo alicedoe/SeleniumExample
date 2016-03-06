@@ -15,7 +15,6 @@ public class TestAllMyStuff {
 		*/
 		GoogleSearch searchPage = BasePage.getInstance(GoogleSearch.class);
 
-		// calling the searchForCheese method will preform the search and return the results page.
 	    GoogleResults resultsPage = searchPage.searchForCheese();
 
 		// once we have our results page we can call methods on the page object and navigate off of it to another page object.
@@ -26,7 +25,7 @@ public class TestAllMyStuff {
 	    goudaPage.verifyGoudaPage();
 	} // end cheeseTest()
 
-	@Test
+	//@Test
 	public void jQueryUI() throws Exception {
 		jQueryUiHome jQueryPage = BasePage.getInstance(jQueryUiHome.class);
 		jQueryPage.gotoPage();
